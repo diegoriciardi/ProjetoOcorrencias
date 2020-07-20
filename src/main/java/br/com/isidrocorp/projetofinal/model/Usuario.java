@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity                     // vou tornar a classe uma entidade armazenavel
 @Table(name="tbl_usuario")  // especifiquei que a classe Usuario será mapeada para a tabela "tbl_usuario"
@@ -26,6 +29,10 @@ public class Usuario {
 	private String senha;
 	@Column(name="link_foto", length=200)
 	private String linkFoto;
+	
+	@JsonIgnoreProperties("listaUsuarios")
+	@ManyToOne
+	private Departamento depto;
 	
 	
 	public int getId() {
@@ -64,6 +71,14 @@ public class Usuario {
 	public void setLinkFoto(String linkFoto) {
 		this.linkFoto = linkFoto;
 	}
+	public Departamento getDepto() {
+		return depto;
+	}
+	public void setDepto(Departamento depto) {
+		this.depto = depto;
+	}
+	
+	
 	
 	
 
