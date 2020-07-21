@@ -42,5 +42,41 @@ public class EventoController {
 			return null;
 		}
 	}
+	
+	@GetMapping("/eventos/alarmes/manual")
+	public ArrayList<VolumeAlarmes> recuperarManual(){
+		/*   passo 1 - recuperar TODOS os eventos
+		 *   passo 2 - para cada evento recuperado, colocar uma variável que conte quantos 
+		 *             são os eventos para cada alarme (sabemos que são 5 alarmes diferentes)
+		 *   passo 3 - montar um ArrayList com os 5 objetos do tipo VolumeAlarmes e retornar
+		 */
+		ArrayList<Evento> listaCompleta = (ArrayList<Evento>) dao.findAll();
+		ArrayList<VolumeAlarmes> lista = new ArrayList<VolumeAlarmes>();
+		// fixo estas variáveis pois tenho apenas 5 alarmes
+		int cont1 = 0, cont2 = 0, cont3 = 0, cont4 = 0, cont5 = 0;
+	
+		for (Evento e: listaCompleta) {
+			switch(e.getAlarme().getId()) {
+			case 1:
+				cont1++; break;
+			case 2:
+				cont2++; break;
+			case 3: 
+				cont3++; break;
+			case 4: 
+				cont4++; break;
+			case 5:
+				cont5++; break;
+			}
+		}
+		lista.add(new VolumeAlarmes(1, cont1));
+		lista.add(new VolumeAlarmes(2, cont2));
+		lista.add(new VolumeAlarmes(3, cont3));
+		lista.add(new VolumeAlarmes(4, cont4));
+		lista.add(new VolumeAlarmes(5, cont5));
+		return lista;	
+	}
+	
+	
 
 }
