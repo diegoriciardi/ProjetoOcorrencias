@@ -30,8 +30,8 @@ public class Usuario {
 	@Column(name="link_foto", length=200)
 	private String linkFoto;
 	
-	@JsonIgnoreProperties("listaUsuarios")
-	@ManyToOne
+	@JsonIgnoreProperties("listaUsuarios") // ao buscar os dados do departamento de um determinado usuário, não traga novamente a lista de usuários
+	@ManyToOne  // neste ponto é criada a coluna na tabela referenciando a FK
 	private Departamento depto;
 	
 	

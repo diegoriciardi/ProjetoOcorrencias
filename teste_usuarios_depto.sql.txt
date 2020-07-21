@@ -1,0 +1,36 @@
+create database projeto;
+
+use projeto;
+drop table tbl_usuario;
+
+insert into tbl_departamento values (null, 'Sistemas/Operacao','Av. dos Estados');
+insert into tbl_departamento values (null, 'Desenvolvimento', 'Av. dos Estados');
+insert into tbl_departamento values (null, 'Administrativo', 'Jabaquara');
+insert into tbl_departamento values (null, 'Financeiro', 'Jabaquara'); 
+
+insert into tbl_usuario values (null, 'isidro@isidro.com', 
+            'https://avatars2.githubusercontent.com/u/6184696?s=460&v=4',
+            'Professor Isidro',
+            '1234567',
+            '1234');
+            
+insert into tbl_usuario values (null, 'user1@user.com', 'foto1', 'Usuario 1', '1234568','1234',1);
+insert into tbl_usuario values (null, 'user2@user.com', 'foto2', 'Usuario 2', '1234569','1234',2);
+insert into tbl_usuario values (null, 'user3@user.com', 'foto3', 'Usuario 3', '1234566','1234',2);
+insert into tbl_usuario values (null, 'user4@user.com', 'foto4', 'Usuario 4', '1234565','1234',3);
+insert into tbl_usuario values (null, 'user5@user.com', 'foto5', 'Usuario 5', '1234564','1234',4);
+insert into tbl_usuario values (null, 'user6@user.com', 'foto6', 'Usuario 6', '1234563','1234',4);
+
+ 
+ desc tbl_usuario;
+ 
+ 
+ select * from tbl_usuario;
+ select * from tbl_departamento;
+ 
+ select * from tbl_usuario inner join tbl_departamento on 
+    tbl_usuario.depto_id = tbl_departamento.id;
+ 
+ insert into tbl_departamento values (null, 'Sistemas/Operacao','Av. dos Estados');
+ 
+ update tbl_usuario set depto_id = 1 where id=1;

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="tbl_departamento")
 public class Departamento {
@@ -23,6 +25,7 @@ public class Departamento {
 	@Column(name="unidade", length=80)
 	private String unidade;
 	
+	@JsonIgnoreProperties("depto") // ao buscar a lista de usuários de um determinado departamento, ignore a informação sobre departamento
 	@OneToMany(mappedBy="depto", cascade=CascadeType.ALL)
 	private List<Usuario> listaUsuarios;
 	
