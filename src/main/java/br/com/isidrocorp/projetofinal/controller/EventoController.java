@@ -49,7 +49,7 @@ public class EventoController {
 		}
 	}
 
-	@GetMapping("/eventos/alarmes/janeiro")
+	@PostMapping("/eventos/alarmes/periodo")
 	public ArrayList<VolumeAlarmes> recuperarDeJaneiro() {
 		try {
 			Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse("01/01/2020");
