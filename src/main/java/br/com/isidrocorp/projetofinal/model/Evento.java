@@ -33,12 +33,12 @@ public class Evento {
 	@ManyToOne
 	@JoinColumn(name="id_alarme")
 	@JsonIgnoreProperties("eventosAlarme")
-	private Alarme alarme;
+	private Alarme alarme;  // funciona como FK
 	
 	@ManyToOne
 	@JoinColumn(name="id_equip")
 	@JsonIgnoreProperties("listaEventos")
-	private Equipamento equipamento;
+	private Equipamento equipamento;  // funciona como FK
 
 	public int getNumSeq() {
 		return numSeq;

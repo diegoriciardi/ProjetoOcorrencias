@@ -5,14 +5,19 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.isidrocorp.projetofinal.dao.EventoDAO;
+import br.com.isidrocorp.projetofinal.dto.PeriodoConsulta;
 import br.com.isidrocorp.projetofinal.dto.VolumeAlarmes;
 import br.com.isidrocorp.projetofinal.model.Evento;
 
 @RestController
+@CrossOrigin("*")
 public class EventoController {
 
 	@Autowired
@@ -30,12 +35,25 @@ public class EventoController {
 	public ArrayList<VolumeAlarmes> recuperarResumoPorAlarme() {
 		return dao.getAllWithName();
 	}
+	
+	@PostMapping("/eventos/periodo")
+	public ArrayList<Evento> recuperarPorPeriodo(@RequestBody PeriodoConsulta periodo){
+		try {
+			Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse(periodo.getInicio());
+			Date fim    = new SimpleDateFormat("yyyy-MM-dd").parse(periodo.getFim());
+			ArrayList<Evento> lista = dao.findByDataBetweenOrderByData(inicio, fim);
+			return lista;
+		}
+		catch(Exception ex) {
+			return null;
+		}
+	}
 
 	@GetMapping("/eventos/alarmes/janeiro")
 	public ArrayList<VolumeAlarmes> recuperarDeJaneiro() {
 		try {
-			Date inicio = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2020");
-			Date fim    = new SimpleDateFormat("dd/MM/yyyy").parse("31/01/2020");
+			Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse("01/01/2020");
+			Date fim    = new SimpleDateFormat("yyyy-MM-dd").parse("31/01/2020");
 
 			return dao.getAllWithNameByPeriod(inicio, fim);
 		} catch (Exception ex) {

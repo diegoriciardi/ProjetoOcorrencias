@@ -14,6 +14,8 @@ public interface EventoDAO extends CrudRepository<Evento, Integer> {
 	public ArrayList<Evento> findByOrderByData();
 	public ArrayList<Evento> findByOrderByNumSeq();
 	
+	public ArrayList<Evento> findByDataBetweenOrderByData(Date inicio, Date fim);
+	
 	@Query("SELECT new br.com.isidrocorp.projetofinal.dto.VolumeAlarmes(ev.alarme.id, count(ev.alarme.id)) "
 			+ " FROM Evento ev GROUP BY ev.alarme.id")
 	public ArrayList<VolumeAlarmes> getAllAlarmes();
