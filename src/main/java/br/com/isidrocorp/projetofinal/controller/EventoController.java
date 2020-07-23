@@ -36,6 +36,7 @@ public class EventoController {
 		return dao.getAllWithName();
 	}
 	
+	
 	@PostMapping("/eventos/periodo")
 	public ArrayList<Evento> recuperarPorPeriodo(@RequestBody PeriodoConsulta periodo){
 		try {

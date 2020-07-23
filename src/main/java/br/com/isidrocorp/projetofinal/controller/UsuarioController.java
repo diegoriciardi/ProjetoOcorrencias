@@ -40,7 +40,8 @@ public class UsuarioController {
 	@PostMapping("/login")
 	public ResponseEntity<Usuario> logarUsuario(@RequestBody Usuario userEmailSenha) {
 		// busco o usuário apenas pelo email
-		Usuario res = dao.findByEmail(userEmailSenha.getEmail());
+		//Usuario res = dao.findByEmail(userEmailSenha.getEmail());
+		Usuario res = dao.findByEmailOrRacf(userEmailSenha.getEmail(), userEmailSenha.getRacf());
 		if (res != null) {
 			if (res.getSenha().equals(userEmailSenha.getSenha())) { // a senha do usuário q recuperei do banco e que eu passei na requisição conferem?
 				res.setSenha("**************");
