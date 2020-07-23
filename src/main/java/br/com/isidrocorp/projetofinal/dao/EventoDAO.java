@@ -29,4 +29,10 @@ public interface EventoDAO extends CrudRepository<Evento, Integer> {
 			    + "WHERE ev.data >= :inicio AND ev.data <= :fim "
 			    + "GROUP BY ev.alarme.id")
 	public ArrayList<VolumeAlarmes> getAllWithNameByPeriod(@Param("inicio") Date inicio, @Param("fim") Date fim);
+	
+	//@Query("SELECT new br.com.isidrocorp.projetofinal.dto.VolumeAlarmes(ev.alarme.id, ev.alarme.nome, count(ev.alarme.id))"  
+	//	    + "FROM Evento ev "
+	//	    + "WHERE ev.data >= :inicio AND ev.data <= :fim "
+	//	    + "GROUP BY ev.alarme.id")
+	//public ArrayList<VolumeAlarmes> getAllAlarmeWithNameByPeriod(@Param("inicio") Date inicio, @Param("fim") Date fim);
 }

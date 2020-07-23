@@ -49,12 +49,19 @@ public class EventoController {
 		}
 	}
 
-	@PostMapping("/eventos/alarmes/periodo")
-	public ArrayList<VolumeAlarmes> recuperarDeJaneiro() {
+	@PostMapping("/alarmes/periodo")
+	public ArrayList<VolumeAlarmes> recuperarAlarmesPorPeriodo(@RequestBody PeriodoConsulta periodo) {
 		try {
-			Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse("01/01/2020");
-			Date fim    = new SimpleDateFormat("yyyy-MM-dd").parse("31/01/2020");
+			//Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse("01/01/2020");
+			//Date fim    = new SimpleDateFormat("yyyy-MM-dd").parse("31/01/2020");
+			//Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse("2020-04-01");
+			//Date fim 	= new SimpleDateFormat("yyyy-MM-dd").parse("2020-04-02");
+			Date inicio = new SimpleDateFormat("yyyy-MM-dd").parse(periodo.getInicio());
+			Date fim    = new SimpleDateFormat("yyyy-MM-dd").parse(periodo.getFim());
 
+			//System.out.println(dao.getAllWithNameByPeriod(inicio, fim));
+			//return dao.getAllWithNameByPeriod(inicio, fim);
+			//return dao.getAllAlarmeWithNameByPeriod(inicio, fim);
 			return dao.getAllWithNameByPeriod(inicio, fim);
 		} catch (Exception ex) {
 			return null;
