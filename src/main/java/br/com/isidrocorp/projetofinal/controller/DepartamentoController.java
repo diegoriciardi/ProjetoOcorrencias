@@ -3,6 +3,7 @@ package br.com.isidrocorp.projetofinal.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import br.com.isidrocorp.projetofinal.dao.DepartamentoDAO;
 import br.com.isidrocorp.projetofinal.model.Departamento;
 
 @RestController
+@CrossOrigin("*")
 public class DepartamentoController {
 	
 	@Autowired
